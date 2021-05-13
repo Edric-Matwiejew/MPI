@@ -366,6 +366,8 @@ m[num_points-1,:]=np.sin(x)
 
 Define array `m` ar `rank = 0` and distribute the array following the method you used in question 1 (b).
 
+Plot your solution using the matplotlib function `matshow` and compare your result to `part_2_expected_output.png`. They should appear (very) similar.
+
  
 
 ### 3 (marks 2):
