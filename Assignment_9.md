@@ -14,11 +14,7 @@ Part 1 covers the MPI functions and program fragments required to implement the 
 
  
 
-## Part 1 (marks 5)
-
- 
-
-### 1. (a)
+### 1. (a) (marks 5)
 
  
 
@@ -164,11 +160,11 @@ Rank:2
 
  
 
-### 1. (b)
+### 1. (c)
 
  
 
-Adding on to your code from 1 (a), implement a single pass of the communication pattern shown on slide 28 of the Lecture slides. Store incoming values from the 'above' rank in an a NumPy array `upper`, and those coming from a 'below' rank in the NumPy array `lower`.
+Adding on to your code from 1 (b), implement a single pass of the communication pattern shown on slide 28 of the Lecture slides. Store incoming values from the 'above' rank in an a NumPy array `upper`, and those coming from a 'below' rank in the NumPy array `lower`.
 
  
 
@@ -286,7 +282,7 @@ Rank:2
 
  
 
-### 1 (c):
+### 1 (d):
 
  
 
@@ -328,7 +324,7 @@ Again use a `COMM.Barrier()` to keep this output seperate from the rest of the q
 
  
 
-### 1 (d)
+### 1 (e)
 
  
 
