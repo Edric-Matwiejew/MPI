@@ -1,20 +1,30 @@
-# Assignment 9
+# SHPC4001 MPI Workshop
 
- 
+## Part 1: Job Scheduling and Environment Modules.
 
-For this assignment you will write an MPI program to solve the Laplace equation using Jacobi iteration and the parallel partitioning scheme described in the lecture slides.
+### 1. (a)
 
- 
+Log on to the QUISA workstation and read through the tutorials 'Using Environment Modules' and 'Job scheduling with Slurm'.
 
-Part 1 covers the MPI functions and program fragments required to implement the parallel algorithm. In part 2 you are asked to implement the alogorithm and compare it qualitatively to a provided result. Finally, in part three you will transfer your program to the QUISA workstation and examine its parallel performence.
+### 1. (b)
 
- 
+Apply the commands and concepts introduced in (a) to:
 
- 
+* Look at the modules available on the workstation.
+* Load the python module.
+* Check the status of the node using 'sinfo'.
+* Look at the list of jobs that are queued or running on the workstation.
+* Compile and run 'examples/fortran/1\_hello\_mpi.f90' on 2 CPU cores in an interactive Slurm session.
+* Comile and run 'examples.fortran/2\_point\_to\_point.f90' on 2 CPU cores using a slurm script and view the program's output.
 
- 
 
-### 1. (a) (marks 5)
+
+## Part 2: Using MPI in Python.
+
+This workshop will introduce you to the MPI functions and program fragments needed to solve the Laplace equation using Jacobi iteration and the parallel partitioning scheme described in the lecture slides.
+
+
+### 2. (a)
 
  
 
@@ -60,7 +70,7 @@ else:
 
  
 
-### 1. (b)
+### 2. (b)
 
  
 
@@ -160,7 +170,7 @@ Rank:2
 
  
 
-### 1. (c)
+### 2. (c)
 
  
 
@@ -282,7 +292,7 @@ Rank:2
 
  
 
-### 1 (d):
+### 2 (d):
 
  
 
@@ -330,54 +340,3 @@ Again use a `COMM.Barrier()` to keep this output seperate from the rest of the q
 
 Use `COMM.Gather` to gather `local_array` to the `rank = 0`. At rank = 0, reshape the the recieved array into a matrix of dimensions `(2, 2)` using the NumPy `reshape` function.
 
- 
-
-### 2 (marks 3):
-
- 
-
-Writes function that performs Jocobi iteration on a 2D array. It should take a 2D array as input, and return the updated array, and the error (epsilon in the slides).
-
- 
-
-Use this 'kernel' in combination with the MPI code written in part 1 to implement a parallel Laplace solver.
-
- 
-
-Solve for a system of `60 x 60` vertices the Laplace equation with initial conditions:
-
- 
-
-```python
-
-m=np.zeros((num_points,num_points),dtype=float)
-
-pi_c=np.pi
-
-x = np.linspace(0,pi_c,num_points)
-
-m[0,:]=np.sin(x)
-
-m[num_points-1,:]=np.sin(x)
-
-```
-
- 
-
-Define array `m` ar `rank = 0` and distribute the array following the method you used in question 1 (b).
-
-Plot your solution using the matplotlib function `matshow` and compare your result to `part_2_expected_output.png`. They should appear (very) similar.
-
- 
-
-### 3 (marks 2):
-
- 
-
-Transfer your code to the QUISA workstation. Using the example *.slurm file as a template, run your code on 2, 4, 6, 8 and 16 processes. Time the program wall time using `time`, as shown in the slurm file.
-
- 
-
-Start off with a grid of size `(1000 x 1000)`. If that that takes too long, work down from there.
-
- 
